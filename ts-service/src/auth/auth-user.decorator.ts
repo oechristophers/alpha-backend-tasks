@@ -1,4 +1,4 @@
-import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+import { createParamDecorator, ExecutionContext, UnauthorizedException } from '@nestjs/common';
 import { Request } from 'express';
 
 import { AuthUser } from './auth.types';
@@ -8,7 +8,7 @@ export const CurrentUser = createParamDecorator(
     const request = context.switchToHttp().getRequest<Request>();
 
     if (!request.user) {
-      throw new Error('Auth user was not attached to request');
+      throw new UnauthorizedException('Auth user was not attached to request');
     }
 
     return request.user;
