@@ -23,11 +23,13 @@ venv/
 python-service/.venv/
 python-service/.pytest_cache/
 python-service/.coverage
+python-service/forme.md
 
 # Node / TypeScript
 node_modules/
 ts-service/node_modules/
 ts-service/dist/
+ts-service/forme.md
 ts-service/coverage/
 *.tsbuildinfo
 
