@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="panel">
+  <div class="section-title">Company Overview</div>
+
+  <table>
+    <tr>
+      <td><strong>Company</strong></td>
+      <td>{{ company.companyName }}</td>
+    </tr>
+
+    <tr>
+      <td><strong>Ticker</strong></td>
+      <td><span class="pill">{{ company.ticker }}</span></td>
+    </tr>
+
+    <tr>
+      <td><strong>Sector</strong></td>
+      <td>{{ company.sector or "Not provided" }}</td>
+    </tr>
+
+    <tr>
+      <td><strong>Analyst</strong></td>
+      <td>{{ company.analystName or "Not provided" }}</td>
+    </tr>
+  </table>
+</section>
+
+
+<section class="panel">
+  <div class="section-title">Executive Summary</div>
+  <p>{{ summary }}</p>
+</section>
+
+
+<section class="panel">
+  <div class="section-title">Key Investment Points</div>
+  <ol>
+    {% for point in key_points %}
+      <li>{{ point.content }}</li>
+    {% endfor %}
+  </ol>
+</section>
+
+
+<section class="panel">
+  <div class="section-title">Risks</div>
+  <ul>
+    {% for risk in risks %}
+      <li>{{ risk.description }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+
+<section class="panel">
+  <div class="section-title">Recommendation</div>
+  <p>{{ recommendation }}</p>
+</section>
+
+
+<section class="panel">
+  <div class="section-title">Key Metrics</div>
+
+  {% if metrics %}
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for metric in metrics %}
+      <tr>
+        <td>{{ metric.name }}</td>
+        <td>{{ metric.value }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+    <p>No metrics available.</p>
+  {% endif %}
+</section>
+
+{% endblock %}
